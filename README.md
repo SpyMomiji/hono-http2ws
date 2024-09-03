@@ -1,6 +1,8 @@
 # hono-http2ws
 寫爽的 (for fun)
 
+原本是要拿去做自己的後台用的。這套件可以讓你的 Hono.js 應用在 Node.js 環境下支援 WebSocket。
+
 修改自 https://github.com/honojs/middleware/tree/main/packages/node-ws
 
 
