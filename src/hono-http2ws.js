@@ -1,12 +1,9 @@
 //修改自 https://github.com/honojs/middleware/tree/main/packages/node-ws
-//應對 hono.js 以及 http2
-//主要修正問題:
-//  訪問到不是為 WebSocket 設置的路徑時會中止連線。
-//  進一步優化請求處理
 
 const WebSocket = require('ws');
 const HTTP = require('node:http');
 
+//WebSocket 事件物件
 class WebSocketEvents{
     constructor(events){
         if(!events) return;
@@ -20,6 +17,7 @@ class WebSocketEvents{
 
 let hostnameKey = Symbol('hostname');
 
+//照搬過來的事件
 class CloseEvent extends Event {
     #eventInitDict
 
@@ -44,6 +42,7 @@ class CloseEvent extends Event {
     }
 }
 
+//伺服端 WebSocket 的界面
 class SocketContext{
     constructor(ws, url ){
         Object.defineProperty(this, 'raw', { get: ()=>ws })
@@ -64,6 +63,7 @@ class SocketContext{
 
 }
 
+//伺服端 WebSocketServer
 class NodeWebSocketServer{
     constructor(honoApp){
         this.honoApp = honoApp;
