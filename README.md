@@ -44,7 +44,7 @@ app.get('/',
     //其餘的請求會進來的地方
     function(c, next ){
         console.log('go normal test');
-        return c.html(template({ message: "now: " + new Date() }));
+        return c.text("now you see me.");
     }
     
 );
